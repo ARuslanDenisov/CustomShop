@@ -34,6 +34,8 @@
 		44AF566C2C8F17E000996978 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 44AF566B2C8F17E000996978 /* FirebaseDatabase */; };
 		44AF56702C8F17E000996978 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 44AF566F2C8F17E000996978 /* FirebaseFirestore */; };
 		44AF56842C8F17E000996978 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 44AF56832C8F17E000996978 /* FirebaseStorage */; };
+		44AF568A2C91D2A800996978 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF56892C91D2A800996978 /* ProductModel.swift */; };
+		44AF568C2C91D4EB00996978 /* OptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF568B2C91D4EB00996978 /* OptionModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		44AF56542C8EE75500996978 /* FBStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBStorageService.swift; sourceTree = "<group>"; };
 		44AF56562C8EE76800996978 /* FBAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAuthService.swift; sourceTree = "<group>"; };
 		44AF56582C8F16EF00996978 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		44AF56892C91D2A800996978 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		44AF568B2C91D4EB00996978 /* OptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +220,8 @@
 			isa = PBXGroup;
 			children = (
 				44AF56502C8EE6BF00996978 /* DataViewModel.swift */,
+				44AF56892C91D2A800996978 /* ProductModel.swift */,
+				44AF568B2C91D4EB00996978 /* OptionModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -377,7 +383,9 @@
 				44AF56482C8EE5A200996978 /* ProductAddView.swift in Sources */,
 				44AF56402C8EE56A00996978 /* ProductView.swift in Sources */,
 				44AF564A2C8EE5AE00996978 /* HomeView.swift in Sources */,
+				44AF568A2C91D2A800996978 /* ProductModel.swift in Sources */,
 				44AF561C2C8EE1F300996978 /* MainView.swift in Sources */,
+				44AF568C2C91D4EB00996978 /* OptionModel.swift in Sources */,
 				44AF56512C8EE6BF00996978 /* DataViewModel.swift in Sources */,
 				44AF561A2C8EE1F300996978 /* CustomShopApp.swift in Sources */,
 				44AF56552C8EE75500996978 /* FBStorageService.swift in Sources */,
