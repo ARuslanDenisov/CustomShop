@@ -15,7 +15,3 @@ struct Banner: Codable, Identifiable {
     let bannerPicture: String
     let productID: String
 }
-
-struct Banners: Codable {
-    let banners: [Banner]
-}
