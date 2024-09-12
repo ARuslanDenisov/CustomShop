@@ -13,7 +13,7 @@ class FBFirestoreService {
     static let shared = FBFirestoreService(); private init () { }
     let db = Firestore.firestore()
     
-    //папки с документами
+    //папки с файлами
     var usersRef: CollectionReference { db.collection("users") }
     var favoritesRef: CollectionReference { db.collection("favorites") }
     var productRef: CollectionReference { db.collection("products") }
@@ -26,9 +26,9 @@ class FBFirestoreService {
     
     
     
-    // CRUD operations
+//     CRUD operations
     
-    //create
+//    create
 //    func addNewUser (newUser: UserModel) async throws {
 //        do {
 //            try await usersRef.document(newUser.id).setData(newUser.representation)
@@ -37,8 +37,18 @@ class FBFirestoreService {
 //        }
 //    }
 //    
-//    //read
-//    
+//    Add product
+    
+    func addNewProduct (_ newProduct: ProductModel) async throws {
+           do {
+               try await productRef.document(newProduct.id).setData(newProduct.representation)
+           } catch {
+               print("add new user FB error")
+           }
+       }
+   
+    //read
+    
 //    func getUser (userId: String) async throws -> UserModel {
 //        let snapshot = try await usersRef.document(userId).getDocument()
 //        guard var user = try await UserModel(qdSnap: snapshot) else { throw NetworkError.badData }
@@ -108,6 +118,6 @@ class FBFirestoreService {
 //        }
 //    }
 //    
-//    
+    
 }
 
