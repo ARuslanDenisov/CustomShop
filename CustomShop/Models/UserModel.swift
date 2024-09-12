@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestore
 
-struct UserModel: Identifiable, Codable {
+struct UserModel: Identifiable {
     var id: String
     var name: String
     var lastName: String
