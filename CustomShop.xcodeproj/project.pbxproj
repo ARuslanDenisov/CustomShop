@@ -36,6 +36,7 @@
 		44AF56842C8F17E000996978 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 44AF56832C8F17E000996978 /* FirebaseStorage */; };
 		44AF568A2C91D2A800996978 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF56892C91D2A800996978 /* ProductModel.swift */; };
 		44AF568C2C91D4EB00996978 /* OptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF568B2C91D4EB00996978 /* OptionModel.swift */; };
+		44AF568E2C93037D00996978 /* ProductBucketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF568D2C93037D00996978 /* ProductBucketModel.swift */; };
 		7AB05C642C92F1740016C69A /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB05C632C92F1740016C69A /* BannerModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		44AF56582C8F16EF00996978 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		44AF56892C91D2A800996978 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		44AF568B2C91D4EB00996978 /* OptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionModel.swift; sourceTree = "<group>"; };
+		44AF568D2C93037D00996978 /* ProductBucketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductBucketModel.swift; sourceTree = "<group>"; };
 		7AB05C632C92F1740016C69A /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -225,6 +227,7 @@
 				44AF56892C91D2A800996978 /* ProductModel.swift */,
 				44AF568B2C91D4EB00996978 /* OptionModel.swift */,
 				7AB05C632C92F1740016C69A /* BannerModel.swift */,
+				44AF568D2C93037D00996978 /* ProductBucketModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				44AF564A2C8EE5AE00996978 /* HomeView.swift in Sources */,
 				44AF568A2C91D2A800996978 /* ProductModel.swift in Sources */,
 				44AF561C2C8EE1F300996978 /* MainView.swift in Sources */,
+				44AF568E2C93037D00996978 /* ProductBucketModel.swift in Sources */,
 				44AF568C2C91D4EB00996978 /* OptionModel.swift in Sources */,
 				44AF56512C8EE6BF00996978 /* DataViewModel.swift in Sources */,
 				44AF561A2C8EE1F300996978 /* CustomShopApp.swift in Sources */,
