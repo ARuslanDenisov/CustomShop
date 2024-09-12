@@ -42,10 +42,14 @@ class FBFirestoreService {
     func addNewProduct (_ newProduct: ProductModel) async throws {
            do {
                try await productRef.document(newProduct.id).setData(newProduct.representation)
+               for option in newProduct.options {
+                   try await optionsRef.document(option.id).setData(option.representation)
+               }
            } catch {
-               print("add new user FB error")
+               print("add new product FB error")
            }
        }
+  
    
     //read
     
