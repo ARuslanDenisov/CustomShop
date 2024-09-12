@@ -52,4 +52,18 @@ extension ProductModel {
 //        self.options = try await FBFirestoreService.shared.getOptions(productId: id)
 //        self.photos = try await FBFirestoreService.shared.getPhotos(productId: id)
     }
+
+    // тестовый продукт для превью
+    static func testProduct() -> ProductModel {
+        let product = ProductModel(id: "205", 
+                                   name: "Snake Jordan 8",
+                                   description: "Lightweight sneakers. n/In these sneakers you are a star and will know many goals",
+                                   price: 330.50,
+                                   currency: "USD",
+                                   options: [],
+                                   mainPhoto: "test",
+                                   photos: ["test"])
+        return product
+    }
+    
 }
