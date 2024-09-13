@@ -10,5 +10,5 @@ import UIKit
 
 struct PhotoModel: Identifiable {
     let id: String
-    let image: UIImage
+    let image: UIImage?
 }
