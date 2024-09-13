@@ -60,4 +60,3 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
-CustomShop.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
