@@ -49,8 +49,14 @@ class FBFirestoreService {
                print("add new product FB error")
            }
        }
-  
-   
+  // add category to shop
+    func addNewCategory(_ category: CategoryModel) async throws {
+        do {
+            try await categoryRef.document(category.id).setData(category.representation)
+        } catch {
+            print ("add new category fb Error")
+        }
+    }
     //read
     
 //    func getUser (userId: String) async throws -> UserModel {
