@@ -43,6 +43,9 @@
 		44AF56962C93142F00996978 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF56952C93142F00996978 /* CategoryModel.swift */; };
 		44AF56982C93277E00996978 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF56972C93277E00996978 /* PhotoModel.swift */; };
 		7AB05C642C92F1740016C69A /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB05C632C92F1740016C69A /* BannerModel.swift */; };
+		925CE7592C945F1900AF24C8 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925CE7582C945F1900AF24C8 /* AuthView.swift */; };
+		925CE75B2C94613700AF24C8 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925CE75A2C94613700AF24C8 /* AuthViewModel.swift */; };
+		925CE75D2C94947000AF24C8 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925CE75C2C94947000AF24C8 /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +79,9 @@
 		44AF56952C93142F00996978 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		44AF56972C93277E00996978 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		7AB05C632C92F1740016C69A /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
+		925CE7582C945F1900AF24C8 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		925CE75A2C94613700AF24C8 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		925CE75C2C94947000AF24C8 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,7 @@
 				44AF562D2C8EE44C00996978 /* Resources */,
 				44AF562C2C8EE43A00996978 /* Elements */,
 				44AF562B2C8EE43100996978 /* AboutView */,
+				925CE7572C945EB700AF24C8 /* AuthViews */,
 				44AF562A2C8EE42800996978 /* LicenseView */,
 				44AF56292C8EE39C00996978 /* SearchProductView */,
 				44AF56282C8EE37D00996978 /* ProductAddView */,
@@ -308,6 +315,16 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		925CE7572C945EB700AF24C8 /* AuthViews */ = {
+			isa = PBXGroup;
+			children = (
+				925CE7582C945F1900AF24C8 /* AuthView.swift */,
+				925CE75C2C94947000AF24C8 /* RegisterView.swift */,
+				925CE75A2C94613700AF24C8 /* AuthViewModel.swift */,
+			);
+			path = AuthViews;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -399,6 +416,8 @@
 				44AF563E2C8EE56100996978 /* FavoritesView.swift in Sources */,
 				44AF56462C8EE59800996978 /* SearchProductView.swift in Sources */,
 				44AF56442C8EE58900996978 /* LicenseView.swift in Sources */,
+				925CE75D2C94947000AF24C8 /* RegisterView.swift in Sources */,
+				925CE7592C945F1900AF24C8 /* AuthView.swift in Sources */,
 				44AF56532C8EE74000996978 /* FBFirestoreService.swift in Sources */,
 				44AF56902C93056800996978 /* OrderModel.swift in Sources */,
 				44AF56942C9309AF00996978 /* UserModel.swift in Sources */,
@@ -414,6 +433,7 @@
 				44AF56512C8EE6BF00996978 /* DataViewModel.swift in Sources */,
 				44AF56922C9305AE00996978 /* TestView.swift in Sources */,
 				44AF561A2C8EE1F300996978 /* CustomShopApp.swift in Sources */,
+				925CE75B2C94613700AF24C8 /* AuthViewModel.swift in Sources */,
 				44AF56552C8EE75500996978 /* FBStorageService.swift in Sources */,
 				44AF56982C93277E00996978 /* PhotoModel.swift in Sources */,
 				7AB05C642C92F1740016C69A /* BannerModel.swift in Sources */,

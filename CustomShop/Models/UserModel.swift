@@ -6,18 +6,34 @@
 //
 
 import Foundation
+import FirebaseAuth
 import FirebaseFirestore
 
 struct UserModel: Identifiable {
-    var id: String
-    var name: String
-    var lastName: String
-    var email: String
-    var birthday: Double
-    var phone: String
-    var accessLevel: Int // 0: admin , 1: user
-    var favorites: [ProductModel]
-    var orders: [OrderModel]
+    var id: String = ""
+    var name: String = ""
+    var lastName: String = ""
+    var email: String = ""
+    var birthday: Double = 0
+    var phone: String = ""
+    var accessLevel: Int = 1// 0: admin , 1: user
+    var favorites: [ProductModel] = []
+    var orders: [OrderModel] = []
+    
+    init(id: String, name: String, email: String) {
+        self.id = id
+        self.name = name
+        self.email = email
+    }
+//    
+//    init(user: User) {
+//        self.id = user.uid
+//        if let email = user.email {
+//            self.email = email
+//        }
+//    }
+    
+    init () { }
 }
 
 

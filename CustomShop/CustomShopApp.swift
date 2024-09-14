@@ -21,7 +21,8 @@ struct CustomShopApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
-            TestView()
+//            TestView()
+            AuthView(showAuthView: .constant(false))
         }
     }
 }
