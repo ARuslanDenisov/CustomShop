@@ -37,6 +37,21 @@ class FBFirestoreService {
 //        }
 //    }
 //    
+    
+    
+    func addNewProductTest (_ newProduct: [String : Any]) async throws {
+           do {
+               try await productRef.document("1").setData(newProduct)
+
+           } catch {
+               print("add new product FB error")
+           }
+       }
+    
+    
+    
+    
+    
 //    Add product
     
     func addNewProduct (_ newProduct: ProductModel) async throws {

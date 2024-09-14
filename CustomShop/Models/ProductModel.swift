@@ -18,8 +18,21 @@ struct ProductModel: Identifiable {
     var categoryId: [String]
     var mainPhoto: String
     var photos: [PhotoModel]
- 
 }
+
+struct TestProductModel: Codable {
+    var id: String
+    var name: String
+    var description: String
+    var price: Double
+    var currency: String
+    //var options: [OptionModel]
+    var categoryId: [String]
+    var mainPhoto: String
+    //var photos: [PhotoModel]
+}
+
+
 
 extension ProductModel {
     // Это для того чтобы в фаерстор положить данные
