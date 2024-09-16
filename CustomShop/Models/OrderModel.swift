@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 
 struct OrderModel: Identifiable, Codable {
@@ -33,6 +34,27 @@ extension OrderModel {
         dict["products"] = products.map{($0.id)}
         dict["idShop"] = self.idShop
         return dict
+    }
+    
+    init?(qdSnap: DocumentSnapshot) async throws {
+        guard let data = qdSnap.data() else { return nil }
+        guard let id = data["id"] as? String,
+              let idShop = data["idShop"] as? String,
+              let city = data["city"] as? String,
+              let address = data["address"] as? String,
+              let postcode = data["postcode"] as? String,
+              let userId = data["userId"] as? String,
+              let description = data["description"] as? String,
+              let stateOfDelievery = data["stateOfDelievery"] as? Int else { return nil }
+        self.id = id
+        self.idShop = idShop
+        self.city = city
+        self.address = address
+        self.postcode = postcode
+        self.userId = userId
+        self.description = description
+        self.stateOfDelievery = stateOfDelievery
+        self.products = []
     }
     
 }

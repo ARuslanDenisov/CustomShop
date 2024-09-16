@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 struct ShopModel: Identifiable {
     var id: String
@@ -47,4 +48,41 @@ extension ShopModel {
         dict["categories"] = self.categories.map({ $0.id })
         return dict
     }
+    init?(qdSnap: DocumentSnapshot) async throws {
+        guard let data = qdSnap.data() else { return nil }
+        guard let id = data["id"] as? String,
+              let name = data["name"] as? String,
+              let information = data["information"] as? String,
+              let city = data["city"] as? String,
+              let address = data["address"] as? String,
+              let postcode = data["postcode"] as? String,
+              let contactMail = data["contactMail"] as? String,
+              let contactPhone = data["contactPhone"] as? String,
+              let idProducts = data["idProducts"] as? [String],
+              let idOrders = data["idOrders"] as? [String],
+              let idPicture = data["idPicture"] as? String,
+              let dateOfCreation = data["dateOfCreation"] as? Double,
+              let ownerId = data["ownerId"] as? String,
+              let currency = data["currency"] as? String else { return nil }
+        self.id = id
+        self.name = name
+        self.information = information
+        self.city = city
+        self.address = address
+        self.postcode = postcode
+        self.contactMail = contactMail
+        self.contactPhone = contactPhone
+        self.idProducts = idProducts
+        self.idOrders = idOrders
+        self.idPicture = idPicture
+        self.dateOfCreation = dateOfCreation
+        self.ownerId = ownerId
+        self.currency = currency
+        self.banners = []
+        self.categories = []
+        //TODO: Добавить получение фотографий и опций
+//        self.options = try await FBFirestoreService.shared.getOptions(productId: id)
+//        self.photos = try await FBFirestoreService.shared.getPhotos(productId: id)
+    }
+
 }

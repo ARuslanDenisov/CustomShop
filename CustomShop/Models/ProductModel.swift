@@ -40,13 +40,7 @@ extension ProductModel {
         })
         return dict
     }
-//    var optionRepresentation: [String: Any] {
-//        var dict = [String: Any]()
-//        for option in options {
-//            dict[option.id]
-//        }
-//    }
-    
+ 
     // инициализатор через документ
     init?(qdSnap: DocumentSnapshot) async throws {
         guard let data = qdSnap.data() else { return nil }
@@ -67,9 +61,6 @@ extension ProductModel {
         self.currency = currency
         self.categoryId = categoryId
         self.options = []
-        //TODO: Добавить получение фотографий и опций
-//        self.options = try await FBFirestoreService.shared.getOptions(productId: id)
-//        self.photos = try await FBFirestoreService.shared.getPhotos(productId: id)
     }
 
     // тестовый продукт для превью
