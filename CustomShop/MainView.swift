@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct MainView: View {
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        Group {
+//            if authViewModel.userSession != nil {
+//                HomeView()
+//            } else {
+//                LoginView()
+//            }
+            LoginView()
         }
-        .padding()
+        
     }
 }
 
-#Preview {
-    MainView()
-}
+//#Preview {
+//    MainView()
+//}
