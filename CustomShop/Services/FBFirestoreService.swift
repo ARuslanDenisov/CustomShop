@@ -53,6 +53,7 @@ class FBFirestoreService {
     func addNewOption (_ option: OptionModel) async throws {
         do {
             try await optionsRef.document(option.id).setData(option.representation)
+            // TODO: update product
         } catch {
             print("add new option FB error")
         }
@@ -206,7 +207,7 @@ class FBFirestoreService {
         return categories
     }
     
-    //update
+    //MARK: update
     
     func updateUser (_ user: UserModel) async throws {
         do {
@@ -269,29 +270,30 @@ class FBFirestoreService {
         }
     }
     
-    //    //delete
+    //MARK: delete
     
-        func deleteFavorite (user: UserModel, product: ProductModel) async throws {
-            do {
-                try await usersRef.document(user.id).collection("favorites").document(product.id).delete()
-            } catch {
-                print("favorites in error")
-                throw error
-            }
+    func deleteFavorite (user: UserModel, product: ProductModel) async throws {
+        do {
+            try await usersRef.document(user.id).collection("favorites").document(product.id).delete()
+        } catch {
+            print("favorites in error")
+            throw error
         }
+    }
     //
-        func deleteUser (_ user: UserModel) async throws {
-            do {
-                try await usersRef.document(user.id).delete()
-            } catch {
-                print("problem with delete user")
-                throw error
-            }
+    func deleteUser (_ user: UserModel) async throws {
+        do {
+            try await usersRef.document(user.id).delete()
+        } catch {
+            print("problem with delete user")
+            throw error
         }
+    }
     //
     func deleteProduct (_ product: ProductModel) async throws {
         do {
             try await productRef.document(product.id).delete()
+            //TODO: Update shop
         } catch {
             print("problem with delete product")
             throw error
@@ -300,6 +302,7 @@ class FBFirestoreService {
     func deleteOrder (_ order: OrderModel) async throws {
         do {
             try await ordersRef.document(order.id).delete()
+            //TODO: Update shop
         } catch {
             print("problem with delete order")
             throw error
@@ -308,6 +311,7 @@ class FBFirestoreService {
     func deleteBanner (_ banner: BannerModel) async throws {
         do {
             try await bannersRef.document(banner.id).delete()
+            //TODO: Update shop
         } catch {
             print("problem with delete banner")
             throw error
@@ -316,6 +320,7 @@ class FBFirestoreService {
     func deleteCategory (_ category: CategoryModel) async throws {
         do {
             try await categoryRef.document(category.id).delete()
+            //TODO: Update shop
         } catch {
             print("problem with delete category")
             throw error
@@ -324,6 +329,7 @@ class FBFirestoreService {
     func deleteOption (_ option: OptionModel) async throws {
         do {
             try await optionsRef.document(option.id).delete()
+            //TODO: Update product
         } catch {
             print("problem with delete option")
             throw error
