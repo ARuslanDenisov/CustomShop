@@ -43,6 +43,7 @@
 		44AF56962C93142F00996978 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF56952C93142F00996978 /* CategoryModel.swift */; };
 		44AF56982C93277E00996978 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF56972C93277E00996978 /* PhotoModel.swift */; };
 		44AF569A2C95829400996978 /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF56992C95829400996978 /* ShopModel.swift */; };
+		7A37F1FC2C98A0D2001DA3DF /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A37F1FB2C98A0D2001DA3DF /* TabBarView.swift */; };
 		7AB05C642C92F1740016C69A /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB05C632C92F1740016C69A /* BannerModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		44AF56952C93142F00996978 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		44AF56972C93277E00996978 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		44AF56992C95829400996978 /* ShopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopModel.swift; sourceTree = "<group>"; };
+		7A37F1FB2C98A0D2001DA3DF /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarView.swift; path = CustomShop/HomeView/TabBarView.swift; sourceTree = SOURCE_ROOT; };
 		7AB05C632C92F1740016C69A /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -194,6 +196,7 @@
 		44AF562C2C8EE43A00996978 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
+				7A37F1FB2C98A0D2001DA3DF /* TabBarView.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 			files = (
 				44AF56572C8EE76800996978 /* FBAuthService.swift in Sources */,
 				44AF56422C8EE58100996978 /* AboutView.swift in Sources */,
+				7A37F1FC2C98A0D2001DA3DF /* TabBarView.swift in Sources */,
 				44AF563C2C8EE54F00996978 /* BasketView.swift in Sources */,
 				44AF564F2C8EE62800996978 /* ImageExtension.swift in Sources */,
 				44AF56382C8EE53B00996978 /* OnboardingView.swift in Sources */,
