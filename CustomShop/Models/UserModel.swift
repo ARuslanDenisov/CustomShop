@@ -31,9 +31,10 @@ extension UserModel {
         dict["birthday"] = self.birthday
         dict["phone"] = self.phone
         dict["accessLevel"] = self.accessLevel
+        dict["favorites"] = self.favorites.map({ $0.id })
+        dict["orders"] = self.orders.map({ $0.id })
         return dict
     }
-    
     // инициализатор через документ
     init?(qdSnap: DocumentSnapshot) async throws {
         guard let data = qdSnap.data() else { return nil }
@@ -58,4 +59,3 @@ extension UserModel {
         //        self.orders = try await FBFirestoreService.shared.getOrders(userId: id)
     }
 }
-

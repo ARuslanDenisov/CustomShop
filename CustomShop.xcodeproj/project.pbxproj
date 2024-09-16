@@ -42,6 +42,7 @@
 		44AF56942C9309AF00996978 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF56932C9309AF00996978 /* UserModel.swift */; };
 		44AF56962C93142F00996978 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF56952C93142F00996978 /* CategoryModel.swift */; };
 		44AF56982C93277E00996978 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF56972C93277E00996978 /* PhotoModel.swift */; };
+		44AF569A2C95829400996978 /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF56992C95829400996978 /* ShopModel.swift */; };
 		7AB05C642C92F1740016C69A /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB05C632C92F1740016C69A /* BannerModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		44AF56932C9309AF00996978 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		44AF56952C93142F00996978 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		44AF56972C93277E00996978 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
+		44AF56992C95829400996978 /* ShopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopModel.swift; sourceTree = "<group>"; };
 		7AB05C632C92F1740016C69A /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -243,6 +245,7 @@
 				44AF56932C9309AF00996978 /* UserModel.swift */,
 				44AF56952C93142F00996978 /* CategoryModel.swift */,
 				44AF56972C93277E00996978 /* PhotoModel.swift */,
+				44AF56992C95829400996978 /* ShopModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				44AF561C2C8EE1F300996978 /* MainView.swift in Sources */,
 				44AF568E2C93037D00996978 /* ProductOrderModel.swift in Sources */,
 				44AF568C2C91D4EB00996978 /* OptionModel.swift in Sources */,
+				44AF569A2C95829400996978 /* ShopModel.swift in Sources */,
 				44AF56512C8EE6BF00996978 /* DataViewModel.swift in Sources */,
 				44AF56922C9305AE00996978 /* TestView.swift in Sources */,
 				44AF561A2C8EE1F300996978 /* CustomShopApp.swift in Sources */,
