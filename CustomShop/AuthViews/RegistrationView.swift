@@ -31,9 +31,23 @@ struct RegistrationView: View {
                 
                     ImputView(text: $name, title: "Full Name", placeholder: "Enter your name")
                     ImputView(text: $email, title: "Email Address", placeholder: "Enter your email")
-                    ImputView(text: $password, title: "Password", placeholder: "Must be at least 8 characters")
-                    ImputView(text: $confirmPassword, title: "Confirm Password", placeholder: "Must be at least 8 characters")
-                    
+                    ImputView(text: $password, title: "Password", placeholder: "Must be at least 8 characters", isSecureField: true)
+            ZStack(alignment: .trailing) {
+                ImputView(text: $confirmPassword, title: "Confirm Password", placeholder: "Must be at least 8 characters", isSecureField: true)
+                if !password.isEmpty && !confirmPassword.isEmpty {
+                    if password == confirmPassword {
+                        Image(systemName: "checkmark.circle.fill")
+                            .imageScale(.large)
+                            .fontWeight(.bold)
+                            .foregroundStyle(Color(.systemGreen))
+                    } else {
+                        Image(systemName: "xmark.circle.fill")
+                            .imageScale(.large)
+                            .fontWeight(.bold)
+                            .foregroundStyle(Color(.systemRed))
+                    }
+                }
+            }
                     Button {
                         Task {
                             try await authViewModel.createUser(withEmail: email, password: password, name: name)
@@ -48,6 +62,8 @@ struct RegistrationView: View {
                     }
                     .frame(width: 360, height: 53)
                     .padding(.vertical)
+                    .disabled(!formIsValid)
+                    .opacity(formIsValid ? 1 : 0.5)
             
             HStack{
                 Text("Already Have Any Account?")
@@ -60,6 +76,17 @@ struct RegistrationView: View {
             }
                 }
                 .padding()
+    }
+}
+
+extension RegistrationView: AuthenticationFormProtocol {
+    var formIsValid: Bool {
+        !email.isEmpty
+        && email.contains("@")
+        && !password.isEmpty
+        && password.count > 7
+        && confirmPassword == password
+        && !name.isEmpty
     }
 }
 

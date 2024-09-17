@@ -11,6 +11,8 @@ struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
     
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -35,17 +37,26 @@ struct LoginView: View {
                     Text("Remember me")
                         .font(.subheadline)
                     Spacer()
-                    NavigationLink {
-                        
+                    Button {
+                        authViewModel.resetPassword(with: email)
                     } label: {
                         Text("Forgot Password?")
                             .font(.subheadline)
                             .foregroundStyle(.red)
                     }
+                    .alert(isPresented: $authViewModel.showResetPasswordAlert) {
+                        Alert(
+                            title: Text("Reset password"),
+                            message: Text(authViewModel.messageResetPassword),
+                            dismissButton: .default(Text("OK"))
+                        )
+                    }
                 }
                 
                 Button {
-                    
+                    Task {
+                        try await authViewModel.signIn(withEmail: email, password: password)
+                    }
                 } label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 25)
@@ -56,6 +67,15 @@ struct LoginView: View {
                 }
                 .frame(width: 360, height: 53)
                 .padding(.vertical)
+                .disabled(!formIsValid)
+                .opacity(formIsValid ? 1 : 0.5)
+                .alert(isPresented: $authViewModel.showInvalidUserCredentails) {
+                    Alert(
+                        title: Text("Invalid Login Credentials"),
+                        message: Text("Please try again"),
+                        dismissButton: .default(Text("OK"))
+                    )
+                }
                 
                 HStack {
                     VStack{
@@ -83,6 +103,15 @@ struct LoginView: View {
             }
             .padding()
         }
+    }
+}
+
+extension LoginView: AuthenticationFormProtocol {
+    var formIsValid: Bool {
+        !email.isEmpty
+        && email.contains("@")
+        && !password.isEmpty
+        && password.count > 7
     }
 }
 
