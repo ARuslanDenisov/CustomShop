@@ -6,8 +6,8 @@
 //
 
 import SwiftUI
-import Firebase
-import FirebaseFirestoreSwift
+import FirebaseAuth
+import FirebaseFirestore
 
 protocol AuthenticationFormProtocol {
     var formIsValid: Bool { get }
