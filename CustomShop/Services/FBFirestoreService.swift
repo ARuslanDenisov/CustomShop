@@ -26,7 +26,7 @@ class FBFirestoreService {
     
     
     
-    //     CRUD operations
+    //CRUD operations
     //MARK: create
     // Добавляем нового юзера
     func addNewUser (newUser: UserModel) async throws {
