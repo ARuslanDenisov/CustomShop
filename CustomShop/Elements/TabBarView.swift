@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TabBarView: View {
 
-    @Binding var isAdmin: Int // 0 - Admin, 1 - User
+    @Binding var isAdmin: Int // 0 - Admin, 1.. - User
     @Binding var index: Int
     @State var aminationIndex: Int = 0
 
@@ -22,7 +22,7 @@ struct TabBarView: View {
 
         ZStack {
             Rectangle()
-                .foregroundStyle(.purple.gradient)
+                .foregroundStyle(.indigo)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
             VStack {
                 HStack {
