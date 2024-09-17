@@ -39,33 +39,40 @@ class FBFirestoreService {
     
     // Добавляем новый продукт
     
-    func addNewProduct (_ newProduct: ProductModel) async throws {
+    func addNewProduct (_ newProduct: ProductModel, shop: ShopModel) async throws {
         do {
             try await productRef.document(newProduct.id).setData(newProduct.representation)
             for option in newProduct.options {
-                try await addNewOption(option)
+                try await addNewOption(option: option, product: newProduct)
             }
-            //TODO: update shop
+            var shopUpdate = shop
+            shopUpdate.idProducts.append(newProduct.id)
+            try await updateShop(shopUpdate)
         } catch {
             print("add new product FB error")
         }
     }
-    func addNewOption (_ option: OptionModel) async throws {
+    func addNewOption (option: OptionModel, product: ProductModel) async throws {
         do {
             try await optionsRef.document(option.id).setData(option.representation)
-            // TODO: update product
+            var productUpdate = product
+            productUpdate.options.append(option)
+            try await updateProduct(productUpdate)
         } catch {
             print("add new option FB error")
         }
     }
     // Добавляем новый заказ на сервер
-    func addNewOrder(_ order: OrderModel) async throws {
+    func addNewOrder(_ order: OrderModel, user: inout UserModel, shop: inout ShopModel) async throws {
         do {
             try await ordersRef.document(order.id).setData(order.representation)
             for product in order.products {
                 try await addNewOrderProduct(product)
             }
-            //TODO: update Shop and update User
+            shop.idOrders.append(order.id)
+            user.orders.append(order)
+            try await updateShop(shop)
+            try await updateUser(user)
         } catch {
             print ("add new order FB Error")
         }
@@ -87,19 +94,21 @@ class FBFirestoreService {
         }
     }
     // новый баннер
-    func addNewBanner (_ banner: BannerModel) async throws {
+    func addNewBanner (_ banner: BannerModel, shop: inout ShopModel) async throws {
         do {
             try await bannersRef.document(banner.id).setData(banner.representation)
-            //TODO: update Shop
+            shop.banners.append(banner)
+            try await updateShop(shop)
         } catch {
             print ("add new banner FB Error")
         }
     }
     // Добавляем категорию в магаз
-    func addNewCategory(_ category: CategoryModel) async throws {
+    func addNewCategory(_ category: CategoryModel, shop: inout ShopModel) async throws {
         do {
             try await categoryRef.document(category.id).setData(category.representation)
-            //TODO: update shop
+            shop.categories.append(category)
+            try await updateShop(shop)
         } catch {
             print ("add new category fb Error")
         }
@@ -152,7 +161,8 @@ class FBFirestoreService {
     func getOrders(_ array: [String]) async throws -> [OrderModel] {
         var orders: [OrderModel] = []
         for ord in array {
-            
+            var order = try await getOrder(ord)
+            orders.append(order)
         }
         return orders
     }
@@ -290,51 +300,55 @@ class FBFirestoreService {
         }
     }
     //
-    func deleteProduct (_ product: ProductModel) async throws {
+    func deleteProduct (product: ProductModel, shop: inout ShopModel) async throws {
         do {
             try await productRef.document(product.id).delete()
-            //TODO: Update shop
+            shop.idProducts.removeAll{ $0 == product.id }
+            try await updateShop(shop)
         } catch {
             print("problem with delete product")
             throw error
         }
     }
-    func deleteOrder (_ order: OrderModel) async throws {
+    func deleteOrder (_ order: OrderModel, shop: inout ShopModel) async throws {
         do {
             try await ordersRef.document(order.id).delete()
-            //TODO: Update shop
+            shop.idOrders.removeAll{ $0 == order.id }
+            try await updateShop(shop)
         } catch {
             print("problem with delete order")
             throw error
         }
     }
-    func deleteBanner (_ banner: BannerModel) async throws {
+    func deleteBanner (_ banner: BannerModel, shop: inout ShopModel) async throws {
         do {
             try await bannersRef.document(banner.id).delete()
-            //TODO: Update shop
+            shop.banners.removeAll {$0.id == banner.id }
+            try await updateShop(shop)
         } catch {
             print("problem with delete banner")
             throw error
         }
     }
-    func deleteCategory (_ category: CategoryModel) async throws {
+    func deleteCategory (_ category: CategoryModel, shop: inout ShopModel) async throws {
         do {
             try await categoryRef.document(category.id).delete()
-            //TODO: Update shop
+            shop.categories.removeAll{ $0.id == category.id }
+            try await updateShop(shop)
         } catch {
             print("problem with delete category")
             throw error
         }
     }
-    func deleteOption (_ option: OptionModel) async throws {
+    func deleteOption (_ option: OptionModel, product: inout ProductModel) async throws {
         do {
             try await optionsRef.document(option.id).delete()
-            //TODO: Update product
+            product.options.removeAll { $0.id == product.id }
         } catch {
             print("problem with delete option")
             throw error
         }
-    } 
+    }
 }
 
 enum NetworkError: Error {
