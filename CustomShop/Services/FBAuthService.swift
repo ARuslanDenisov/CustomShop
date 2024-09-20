@@ -6,69 +6,99 @@
 //
 
 import Foundation
-import Firebase
 import FirebaseAuth
+import FirebaseFirestore
 
 struct AuthDataResultModel {
-    let uid: String
+    let id: String
     let email: String?
+    let name: String?
     
     init(user: User) {
-        self.uid = user.uid
+        self.id = user.uid
         self.email = user.email
+        self.name = user.displayName
     }
 }
+
+
 
 final class FBAuthService {
     static let shared = FBAuthService()
     private init() {}
     var currentUser: User?
     
-    //    func registerNewUser(user: UserData) {
-    //        Auth.auth().createUser(withEmail: user.email, password: user.password) { result, err in
-    //            guard err == nil else {
-    //                print(err?.localizedDescription ?? "error")
-    //                return
-    //            }
-    ////            result?.user.sendEmailVerification()
-    //
-    //            }
-    //        }
-    //    }
-    
-    func signUp(email: String, password: String) async throws -> Bool {
-        do {
-            let result = try await Auth.auth().createUser(withEmail: email, password: password)
-            currentUser = result.user
-            return true
-        } catch {
-            print(error.localizedDescription)
-        }
-        return false
-    }
-    
-    func signIn (email: String, password: String ) async throws -> Bool {
+    func signIn(withEmail email: String, password: String) async throws {
         do {
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
             currentUser = result.user
-            return true
+            await fetchUser()
         } catch {
-            print("wrong email or password")
+            print("Failed to create user with error: \(error.localizedDescription)")
         }
-        return false
     }
     
-    func getAuthenticationUser() throws -> AuthDataResultModel {
-        guard let user = Auth.auth().currentUser else {
-            throw URLError(.badServerResponse)
+    func signUp(withEmail email: String, password: String, name: String) async throws {
+        do {
+            let result = try await Auth.auth().createUser(withEmail: email, password: password)
+            currentUser = result.user
+//            let user = User(id: result.user.uid, name: name, email: email)
+//            let encodedUser = try Firestore.Encoder().encode(user)
+//            try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
+            await fetchUser()
+        } catch {
+            print("Failed to login user with error: \(error.localizedDescription)")
         }
-        return AuthDataResultModel(user: user)
+    }
+    
+    func signOut() {
+        do {
+            try Auth.auth().signOut()
+//            self.userSession = nil
+//            self.currentUser = nil
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func deleteAccount() async throws {
+        if let uid = Auth.auth().currentUser?.uid {
+            let userDocumentReference = Firestore.firestore().collection("users").document()
+            try await userDocumentReference.delete()
+        }
+        
+        do {
+            try await self.currentUser?.delete()
+            self.currentUser = nil
+        } catch {
+            print("User account failed to delete with error: \(error.localizedDescription)")
+        }
+    }
+    
+    func fetchUser() async {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let snapshot = try? await Firestore.firestore().collection("users").document(uid).getDocument() else { return }
+//        self.currentUser = try? snapshot.data(as: User.self)
+        print("Current user is \(String(describing: self.currentUser))")
+    }
+    
+    func resetPassword(withEmail email: String, completion: @escaping (Error?) -> Void) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            completion(error)
+        }
     }
 }
 
-
-//struct UserData {
-//    var name: String
-//    var email: String
-//    var password: String
+//extension FBAuthService {
+//
+//    @discardableResult
+//    func signInWithGoogle(tokens: GoogleSignInResultModel) async throws -> AuthDataResultModel {
+//        let credential = GoogleAuthProvider.credential(withIDToken: tokens.idToken, accessToken: tokens.accessToken)
+//        return try await signIn(credential: credential)
+//    }
+//
+//    func signIn(credential: AuthCredential) async throws -> AuthDataResultModel {
+//        let authDataResult = try await Auth.auth().signIn(with: credential)
+//        return AuthDataResultModel(user: authDataResult.user)
+//    }
 //}

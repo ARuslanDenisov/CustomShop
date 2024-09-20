@@ -5,39 +5,71 @@
 //  Created by Юрий on 13.09.2024.
 //
 
-import Foundation
+import SwiftUI
+import FirebaseAuth
+import FirebaseFirestore
+import GoogleSignIn
+import GoogleSignInSwift
+
+protocol AuthenticationFormProtocol {
+    var formIsValid: Bool { get }
+}
 
 @MainActor
-final class AuthViewModel: ObservableObject {
-    @Published var name = ""
+class AuthViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
-    @Published var signInBool = true
+    @Published var confirmPassword = ""
+    @Published var name = ""
+    @Published var userSession: FirebaseAuth.User?
+    @Published var currentUser: User?
+    @Published var showInvalidUserCredentails = false
+    @Published var messageResetPassword = ""
+    @Published var showResetPasswordAlert = false
     
-    @Published var userModel = UserModel()
-    
-    func signUp() async -> Bool {
+    func signIn() async {
         do {
-            var result = false
-            result = try await FBAuthService.shared.signUp(email: email, password: password)
-            if let id = FBAuthService.shared.currentUser?.uid {
-                userModel = UserModel(id: id, name: name, email: email)
+            try await FBAuthService.shared.signIn(withEmail: email, password: password)
+        } catch {
+            print("Failed to create user with error: \(error.localizedDescription)")
+            showInvalidUserCredentails.toggle()
+        }
+    }
+    
+    func signUp() async {
+        do {
+            try await FBAuthService.shared.signUp(withEmail: email, password: password, name: name)
+        } catch {
+            print("Failed to login user with error: \(error.localizedDescription)")
+        }
+    }
+    
+    func resetPassword()  {
+        FBAuthService.shared.resetPassword(withEmail: email) { error in
+            if let error = error {
+                self.messageResetPassword = "Failed to reset password with error: \(error.localizedDescription)"
+            } else {
+                self.messageResetPassword = "Password reset instructions sent to your email."
             }
-            return result
-        } catch {
-            print(error.localizedDescription)
-            return false
+            self.showResetPasswordAlert = true
         }
     }
     
-    func signIn() async -> Bool {
-        do {
-            var result: Bool = false
-            result = try await FBAuthService.shared.signIn(email: email, password: password)
-            return result
-        } catch {
-            print(error.localizedDescription)
-            return false
-        }
-    }
+//    func signInGoogle() async throws {
+//        guard let topVC = Utilites.shared.topViewController() else {
+//            throw URLError(.cannotFindHost)
+//        }
+//
+//        let gidSignInResult = try await GIDSignIn.sharedInstance.signIn(withPresenting: topVC)
+//
+//        guard let idToken = gidSignInResult.user.idToken?.tokenString else {
+//            throw URLError(.badServerResponse)
+//        }
+//
+//        let accessToken = gidSignInResult.user.accessToken.tokenString
+//
+//        let tokens = GoogleSignInResultModel(idToken: idToken, accessToken: accessToken)
+//        try await FBAuthService.shared.signInWithGoogle(tokens: tokens)
+//    }
 }
+
