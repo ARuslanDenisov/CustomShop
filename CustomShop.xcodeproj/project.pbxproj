@@ -48,7 +48,7 @@
 		92AC9BDC2C9D8404004169DC /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 92AC9BDB2C9D8404004169DC /* GoogleSignIn */; };
 		92AC9BDE2C9D8404004169DC /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 92AC9BDD2C9D8404004169DC /* GoogleSignInSwift */; };
 		92AC9BE02C9D84B7004169DC /* Utilites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AC9BDF2C9D84B7004169DC /* Utilites.swift */; };
-		92AC9BE32C9D84D6004169DC /* ImputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AC9BE12C9D84D6004169DC /* ImputView.swift */; };
+		92AC9BE32C9D84D6004169DC /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AC9BE12C9D84D6004169DC /* InputView.swift */; };
 		92AC9BE52C9D850C004169DC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AC9BE42C9D850C004169DC /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,7 +86,7 @@
 		925CE75A2C94613700AF24C8 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		925CE75C2C94947000AF24C8 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		92AC9BDF2C9D84B7004169DC /* Utilites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilites.swift; sourceTree = "<group>"; };
-		92AC9BE12C9D84D6004169DC /* ImputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImputView.swift; sourceTree = "<group>"; };
+		92AC9BE12C9D84D6004169DC /* InputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		92AC9BE42C9D850C004169DC /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -338,7 +338,7 @@
 		92AC9BE22C9D84D6004169DC /* Componenets */ = {
 			isa = PBXGroup;
 			children = (
-				92AC9BE12C9D84D6004169DC /* ImputView.swift */,
+				92AC9BE12C9D84D6004169DC /* InputView.swift */,
 			);
 			path = Componenets;
 			sourceTree = "<group>";
@@ -437,7 +437,7 @@
 				44AF563E2C8EE56100996978 /* FavoritesView.swift in Sources */,
 				44AF56462C8EE59800996978 /* SearchProductView.swift in Sources */,
 				44AF56442C8EE58900996978 /* LicenseView.swift in Sources */,
-				92AC9BE32C9D84D6004169DC /* ImputView.swift in Sources */,
+				92AC9BE32C9D84D6004169DC /* InputView.swift in Sources */,
 				925CE75D2C94947000AF24C8 /* RegisterView.swift in Sources */,
 				44AF56532C8EE74000996978 /* FBFirestoreService.swift in Sources */,
 				44AF56902C93056800996978 /* OrderModel.swift in Sources */,

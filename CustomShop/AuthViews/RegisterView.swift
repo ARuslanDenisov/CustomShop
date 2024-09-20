@@ -14,8 +14,8 @@ struct RegistrationView: View {
     @State private var confirmPassword = ""
     
     @Environment(\.dismiss) var dismiss
-    
-    @EnvironmentObject var authViewModel: AuthViewModel
+    @StateObject var authViewModel = AuthViewModel()
+//    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         VStack {
@@ -29,11 +29,11 @@ struct RegistrationView: View {
             }
             .padding()
                 
-                    ImputView(text: $name, title: "Full Name", placeholder: "Enter your name")
-                    ImputView(text: $email, title: "Email Address", placeholder: "Enter your email")
-                    ImputView(text: $password, title: "Password", placeholder: "Must be at least 8 characters", isSecureField: true)
+                    InputView(text: $name, title: "Full Name", placeholder: "Enter your name")
+                    InputView(text: $email, title: "Email Address", placeholder: "Enter your email")
+                    InputView(text: $password, title: "Password", placeholder: "Must be at least 8 characters", isSecureField: true)
             ZStack(alignment: .trailing) {
-                ImputView(text: $confirmPassword, title: "Confirm Password", placeholder: "Must be at least 8 characters", isSecureField: true)
+                InputView(text: $confirmPassword, title: "Confirm Password", placeholder: "Must be at least 8 characters", isSecureField: true)
                 if !password.isEmpty && !confirmPassword.isEmpty {
                     if password == confirmPassword {
                         Image(systemName: "checkmark.circle.fill")

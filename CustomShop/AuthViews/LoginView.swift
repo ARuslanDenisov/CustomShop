@@ -10,8 +10,8 @@ import SwiftUI
 struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
-    
-    @EnvironmentObject var authViewModel: AuthViewModel
+    @StateObject var authViewModel = AuthViewModel()
+//    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         NavigationStack {
@@ -27,10 +27,10 @@ struct LoginView: View {
                 }
                 .padding()
                 
-                ImputView(text: $email, title: "Email Address", placeholder: "Enter your email")
+                InputView(text: $email, title: "Email Address", placeholder: "Enter your email")
                     .autocapitalization(.none)
                 
-                ImputView(text: $password, title: "Password", placeholder: "Must be at least 8 characters", isSecureField: true)
+                InputView(text: $password, title: "Password", placeholder: "Must be at least 8 characters", isSecureField: true)
                     .autocapitalization(.none)
                 
                 HStack {
@@ -101,6 +101,7 @@ struct LoginView: View {
                     }
                 }
             }
+//            .environmentObject(AuthViewModel())
             .padding()
         }
     }

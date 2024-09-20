@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ImputView: View {
+struct InputView: View {
     @Binding var text: String
     let title: String
     let placeholder: String
@@ -33,5 +33,5 @@ struct ImputView: View {
 }
 
 #Preview {
-    ImputView(text: .constant("Text"), title: "Title", placeholder: "Placeholder")
+    InputView(text: .constant("Text"), title: "Title", placeholder: "Placeholder")
 }
