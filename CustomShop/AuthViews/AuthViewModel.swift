@@ -7,7 +7,6 @@
 
 import SwiftUI
 import FirebaseAuth
-import FirebaseFirestore
 import GoogleSignIn
 import GoogleSignInSwift
 
@@ -55,21 +54,21 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-//    func signInGoogle() async throws {
-//        guard let topVC = Utilites.shared.topViewController() else {
-//            throw URLError(.cannotFindHost)
-//        }
-//
-//        let gidSignInResult = try await GIDSignIn.sharedInstance.signIn(withPresenting: topVC)
-//
-//        guard let idToken = gidSignInResult.user.idToken?.tokenString else {
-//            throw URLError(.badServerResponse)
-//        }
-//
-//        let accessToken = gidSignInResult.user.accessToken.tokenString
-//
-//        let tokens = GoogleSignInResultModel(idToken: idToken, accessToken: accessToken)
-//        try await FBAuthService.shared.signInWithGoogle(tokens: tokens)
-//    }
+    func signInGoogle() async throws {
+        guard let topVC = Utilites.shared.topViewController() else {
+            throw URLError(.cannotFindHost)
+        }
+
+        let gidSignInResult = try await GIDSignIn.sharedInstance.signIn(withPresenting: topVC)
+
+        guard let idToken = gidSignInResult.user.idToken?.tokenString else {
+            throw URLError(.badServerResponse)
+        }
+
+        let accessToken = gidSignInResult.user.accessToken.tokenString
+
+        let tokens = GoogleSignInResultModel(idToken: idToken, accessToken: accessToken)
+        try await FBAuthService.shared.signInWithGoogle(tokens: tokens)
+    }
 }
 
