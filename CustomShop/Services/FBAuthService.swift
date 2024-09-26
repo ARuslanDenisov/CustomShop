@@ -87,6 +87,16 @@ final class FBAuthService {
             completion(error)
         }
     }
+    
+    func checkUser(_ email: String) async throws -> Bool {
+        do {
+            try await Auth.auth().sendPasswordReset(withEmail: email)
+            return true
+        } catch {
+            print("error with checkUser")
+            return false
+        }
+    }
 }
 
 extension FBAuthService {

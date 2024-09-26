@@ -14,7 +14,7 @@ struct RegistrationView: View {
     @State private var confirmPassword = ""
     
     @Environment(\.dismiss) var dismiss
-//    @StateObject var authViewModel = AuthViewModel()
+    //    @StateObject var authViewModel = AuthViewModel()
     @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
@@ -28,54 +28,55 @@ struct RegistrationView: View {
                     .foregroundStyle(.gray)
             }
             .padding()
-                
-                    InputView(text: $name, title: "Full Name", placeholder: "Enter your name")
-                    InputView(text: $email, title: "Email Address", placeholder: "Enter your email")
-                    InputView(text: $password, title: "Password", placeholder: "Must be at least 8 characters", isSecureField: true)
-            ZStack(alignment: .trailing) {
+            
+            InputView(text: $name, title: "Full Name", placeholder: "Enter your name")
+            InputView(text: $email, title: "Email Address", placeholder: "Enter your email")
+            InputView(text: $password, title: "Password", placeholder: "Must be at least 8 characters", isSecureField: true)
+            ZStack {
                 InputView(text: $confirmPassword, title: "Confirm Password", placeholder: "Must be at least 8 characters", isSecureField: true)
                 if !password.isEmpty && !confirmPassword.isEmpty {
-                    if password == confirmPassword {
-                        Image(systemName: "checkmark.circle.fill")
-                            .imageScale(.large)
-                            .fontWeight(.bold)
-                            .foregroundStyle(Color(.systemGreen))
-                    } else {
-                        Image(systemName: "xmark.circle.fill")
-                            .imageScale(.large)
-                            .fontWeight(.bold)
-                            .foregroundStyle(Color(.systemRed))
-                    }
+                        VStack {
+                            HStack {
+                                Spacer()
+                                Image(systemName: password == confirmPassword ? "checkmark.circle.fill" : "xmark.circle.fill")
+                                    .imageScale(.large)
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(Color(password == confirmPassword ? .systemGreen : .systemRed))
+                                    .padding(.vertical, 5)
+                            }
+                            Spacer()
+                        }
                 }
             }
-                    Button {
-                        Task {
-                            await authViewModel.signUp()
-                        }
-                    } label: {
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 25)
-                                .foregroundColor(.black)
-                            Text("Sign Up")
-                                .foregroundStyle(.white)
-                        }
-                    }
-                    .frame(width: 360, height: 53)
-                    .padding(.vertical)
-                    .disabled(!formIsValid)
-                    .opacity(formIsValid ? 1 : 0.5)
+            .frame(height: 100)
+            Button {
+                Task {
+                    await authViewModel.signUp()
+                }
+            } label: {
+                ZStack{
+                    RoundedRectangle(cornerRadius: 25)
+                        .foregroundColor(.black)
+                    Text("Sign Up")
+                        .foregroundStyle(.white)
+                }
+            }
+            .frame(width: 360, height: 53)
+            .padding(.vertical)
+            .disabled(!formIsValid)
+            .opacity(formIsValid ? 1 : 0.5)
             
             HStack{
                 Text("Already Have Any Account?")
                 Button {
-                  dismiss()
+                    dismiss()
                 } label: {
                     Text("Sign In")
                         .foregroundStyle(.red)
                 }
             }
-                }
-                .padding()
+        }
+        .padding()
     }
 }
 
