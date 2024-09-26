@@ -114,7 +114,7 @@ struct LoginView: View {
                     }
                 }
             }
-//            .environmentObject(AuthViewModel())
+            .environmentObject(authViewModel)
             .padding()
         }
     }

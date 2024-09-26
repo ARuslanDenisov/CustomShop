@@ -14,8 +14,8 @@ struct RegistrationView: View {
     @State private var confirmPassword = ""
     
     @Environment(\.dismiss) var dismiss
-    @StateObject var authViewModel = AuthViewModel()
-//    @EnvironmentObject var authViewModel: AuthViewModel
+//    @StateObject var authViewModel = AuthViewModel()
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         VStack {
