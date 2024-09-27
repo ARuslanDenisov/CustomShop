@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TabBarView: View {
     
-    @State var isAdmin: Int // 0 - Admin, 1 - User
+    @State var isAdmin: Bool // 0 - Admin, 1 - User
     @Binding var index: Int
     @State var aminationIndex: Int = 0
     
@@ -18,7 +18,7 @@ struct TabBarView: View {
     
     var body: some View {
         
-        let images = isAdmin == 0 ? adminImages : userImages
+        let images = isAdmin ? adminImages : userImages
         
         ZStack {
             Rectangle()
@@ -48,5 +48,5 @@ struct TabBarView: View {
 }
 
 #Preview {
-    TabBarView(isAdmin: 1, index: .constant(0))
+    TabBarView(isAdmin: true, index: .constant(0))
 }

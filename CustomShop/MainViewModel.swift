@@ -10,4 +10,5 @@ import Foundation
 @MainActor
 class MainViewModel: ObservableObject {
     @Published var tabIndex = 0
+    @Published var isAdmin = false
 }

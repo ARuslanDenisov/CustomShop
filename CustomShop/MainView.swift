@@ -18,7 +18,11 @@ struct MainView: View {
                 case 1:
                     SearchProductView()
                 case 2:
-                    FavoritesView()
+                    if vm.isAdmin { 
+                        ProductAddView()
+                    } else {
+                        FavoritesView()
+                    }
                 case 3:
                     SettingsView()
                 default:
@@ -28,7 +32,7 @@ struct MainView: View {
             .navigationViewStyle(.stack)
             VStack {
                 Spacer()
-                TabBarView(isAdmin: 1, index: $vm.tabIndex)
+                TabBarView(isAdmin: vm.isAdmin, index: $vm.tabIndex)
             }
         }
         .padding()
