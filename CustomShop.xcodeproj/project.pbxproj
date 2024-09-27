@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4474B5D22CA690F200FDBEF1 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4474B5D12CA690F200FDBEF1 /* MainViewModel.swift */; };
 		44AF561A2C8EE1F300996978 /* CustomShopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF56192C8EE1F300996978 /* CustomShopApp.swift */; };
 		44AF561C2C8EE1F300996978 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF561B2C8EE1F300996978 /* MainView.swift */; };
 		44AF561E2C8EE1F400996978 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44AF561D2C8EE1F400996978 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4474B5D12CA690F200FDBEF1 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		44AF56162C8EE1F300996978 /* CustomShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44AF56192C8EE1F300996978 /* CustomShopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShopApp.swift; sourceTree = "<group>"; };
 		44AF561B2C8EE1F300996978 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				44AF561D2C8EE1F400996978 /* Assets.xcassets */,
 				44AF561F2C8EE1F400996978 /* Preview Content */,
 				44AF56912C9305AE00996978 /* TestView.swift */,
+				4474B5D12CA690F200FDBEF1 /* MainViewModel.swift */,
 			);
 			path = CustomShop;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				44AF56382C8EE53B00996978 /* OnboardingView.swift in Sources */,
 				44AF563E2C8EE56100996978 /* FavoritesView.swift in Sources */,
 				44AF56462C8EE59800996978 /* SearchProductView.swift in Sources */,
+				4474B5D22CA690F200FDBEF1 /* MainViewModel.swift in Sources */,
 				44AF56442C8EE58900996978 /* LicenseView.swift in Sources */,
 				44AF56532C8EE74000996978 /* FBFirestoreService.swift in Sources */,
 				44AF56902C93056800996978 /* OrderModel.swift in Sources */,
