@@ -8,12 +8,28 @@
 import SwiftUI
 
 struct MainView: View {
+    @StateObject var vm = MainViewModel()
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            NavigationView {
+                switch vm.tabIndex {
+                case 0:
+                    HomeView()
+                case 1:
+                    SearchProductView()
+                case 2:
+                    FavoritesView()
+                case 3:
+                    SettingsView()
+                default:
+                    HomeView()
+                }
+            }
+            .navigationViewStyle(.stack)
+            VStack {
+                Spacer()
+                TabBarView(isAdmin: 1, index: $vm.tabIndex)
+            }
         }
         .padding()
     }
